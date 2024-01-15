@@ -1,3 +1,4 @@
+using PsychologicalHelp.Services;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
@@ -8,10 +9,11 @@ namespace PsychologicalHelp;
 public class TelegramBotController
 {
     private  readonly ITelegramBotClient _botClient;
-
-    public TelegramBotController(ITelegramBotClient botClient)
+    private readonly SubscriptionService _subscriptionService;
+    public TelegramBotController(ITelegramBotClient botClient, SubscriptionService subscriptionService)
     {
         _botClient = botClient;
+        _subscriptionService = subscriptionService;
     }
 
     public void StartBot()
